@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
-const { response } = require('express');
+const { response, request } = require('express');
+const PORT = 2121
 
 let dbConnectionStr = 'mongodb+srv://soda:soda@cluster0.zkkqm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
@@ -31,9 +32,9 @@ let dbConnectionStr = 'mongodb+srv://soda:soda@cluster0.zkkqm.mongodb.net/myFirs
     app.use(express.static('public'))
     app.use(bodyParser.json())
 
-    app.listen(3000, function() {
-        console.log('listening on 3000')
-      })
+    app.listen(process.env.PORT || PORT, ()=>{
+        console.log(`Server running on port ${PORT}`)
+    })
       app.use(bodyParser.urlencoded({ extended: true }))
 
       app.get('/',(request, response) => {
@@ -72,7 +73,17 @@ let dbConnectionStr = 'mongodb+srv://soda:soda@cluster0.zkkqm.mongodb.net/myFirs
           })
           .catch(error => console.error(error))
       })
-  })
+      app.delete('/sodas', (request, response) => {
+        sodaCollection.deleteOne(
+          { brand: request.body.brand }
+        )
+          .then(result => {
+            response.json(`Deleted Soda`)
+          })
+          .catch(error => console.error(error))
+      })
+})
+  
 
 
 
