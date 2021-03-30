@@ -22,7 +22,7 @@ let dbConnectionStr = 'mongodb+srv://soda:soda@cluster0.zkkqm.mongodb.net/myFirs
 //         const sodaCollection = db.collection('soda')
 //     })
     
-    MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Database')
     const db = client.db('Soda-App')
