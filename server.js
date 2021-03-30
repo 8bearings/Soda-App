@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 const { response, request } = require('express');
-const PORT = 2121
+const PORT = 3000
 
 let dbConnectionStr = 'mongodb+srv://soda:soda@cluster0.zkkqm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
