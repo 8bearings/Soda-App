@@ -28,9 +28,14 @@ let dbConnectionStr = 'mongodb+srv://soda:soda@cluster0.zkkqm.mongodb.net/myFirs
     const db = client.db('Soda-App')
     const sodaCollection = db.collection('soda')
 
+    // app.set('view engine', 'ejs')
+    // app.use(express.static('public'))
+    // app.use(bodyParser.json())
+
     app.set('view engine', 'ejs')
     app.use(express.static('public'))
-    app.use(bodyParser.json())
+    app.use(express.urlencoded({ extended: true }))
+    app.use(express.json())
 
     app.listen(process.env.PORT || PORT, ()=>{
         console.log(`Server running on port ${PORT}`)
