@@ -28,7 +28,8 @@ let dbConnectionStr = 'mongodb+srv://soda:soda@cluster0.zkkqm.mongodb.net/myFirs
     const sodaCollection = db.collection('soda')
 
     app.set('view engine', 'ejs')
-    
+    app.use(express.static('public'))
+    app.use(bodyParser.json())
 
     app.listen(3000, function() {
         console.log('listening on 3000')
@@ -44,6 +45,25 @@ let dbConnectionStr = 'mongodb+srv://soda:soda@cluster0.zkkqm.mongodb.net/myFirs
           .catch(error => console.error(error))
       })
     
+      app.put('/sodas', (request, response) => {
+        console.log(request.body)
+        sodaCollection.findOneAndUpdate(
+            { brand: 'coke' },
+            {
+              $set: {
+                brand: request.body.brand,
+                flavor: request.body.flavor
+              }
+            },
+            {
+              upsert: true
+            }
+          )
+          
+          .then(result => {
+              response.json('Success')
+          })
+      })
     
       app.post('/sodas', (request, response) => {
         sodaCollection.insertOne(request.body)
