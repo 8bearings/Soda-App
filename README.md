@@ -5,7 +5,7 @@ Add your favorite soda to a list of sodas OR add the best soda in existence!
 Link to project: https://dashboard.heroku.com/apps/soda---app
 
 
-How It's Made:
+
 Tech used: HTML, JavaScript, Node.js, Express, MongoDB
 
 
