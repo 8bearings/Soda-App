@@ -4,8 +4,9 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient;
 const { response, request } = require('express');
 const PORT = 3000
-
-let dbConnectionStr = 'mongodb+srv://soda:soda@cluster0.zkkqm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+require('dotenv').config()
+ 
+let dbConnectionStr = process.env.DB_STRING
 
 // MongoClient.connect(dbConnectionStr, (err, client) => {
 //      if(err) return console.error(err)
