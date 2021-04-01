@@ -2,7 +2,7 @@
 
 Add your favorite soda to a list of sodas OR add the best soda in existence!
 
-Link to project: https://dashboard.heroku.com/apps/soda---app
+Link to project: https://soda---app.herokuapp.com/
 
 
 
